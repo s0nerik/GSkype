@@ -2,8 +2,37 @@
 <!-- Generated with glade 3.19.0 -->
 <interface>
   <requires lib="gtk+" version="3.16"/>
+  <object class="GtkAction" id="action_show_settings_popup">
+    <property name="label" translatable="yes">Settings</property>
+    <property name="short_label" translatable="yes">Settings</property>
+    <property name="icon_name">view-sidebar-symbolic</property>
+    <property name="hide_if_empty">False</property>
+    <property name="always_show_image">True</property>
+  </object>
+  <object class="GtkMenu" id="menu_settings">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <child>
+      <object class="GtkCheckMenuItem" id="switch_autologin">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="label" translatable="yes">Autologin</property>
+        <property name="use_underline">True</property>
+        <property name="active">True</property>
+      </object>
+    </child>
+    <child>
+      <object class="GtkMenuItem" id="btn_logout">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="label" translatable="yes">Log out</property>
+        <property name="use_underline">True</property>
+      </object>
+    </child>
+  </object>
   <object class="GtkApplicationWindow" id="applicationwindow">
     <property name="can_focus">False</property>
+    <property name="icon">skype_icon.png</property>
     <child>
       <object class="GtkScrolledWindow" id="scrolledwindow">
         <property name="visible">True</property>
@@ -21,7 +50,21 @@
         <property name="title">GSkype</property>
         <property name="show_close_button">True</property>
         <child>
-          <placeholder/>
+          <object class="GtkMenuButton" id="btn_settings">
+            <property name="use_action_appearance">True</property>
+            <property name="related_action">action_show_settings_popup</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <property name="popup">menu_settings</property>
+            <property name="direction">none</property>
+            <child>
+              <placeholder/>
+            </child>
+          </object>
+          <packing>
+            <property name="position">1</property>
+          </packing>
         </child>
       </object>
     </child>
